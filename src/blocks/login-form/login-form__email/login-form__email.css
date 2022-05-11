@@ -1,0 +1,16 @@
+.login-form__email {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  color: #fff;
+  margin-bottom: 30px;
+  padding-bottom: 13px;
+}

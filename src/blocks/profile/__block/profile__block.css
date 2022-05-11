@@ -1,0 +1,10 @@
+.profile__block {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .profile__block {
+    margin: auto;
+    margin-bottom: 36px;
+    flex-direction: column;
+  }
+}
