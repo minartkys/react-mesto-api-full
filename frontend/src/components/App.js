@@ -30,13 +30,13 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [isLoggedIn, setisLoggedIn] = React.useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState(null);
   const [isSuccessReg, setIsSuccessReg] = React.useState(false);
 
   const history = useHistory();
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -133,14 +133,14 @@ function App() {
   function tokenCheck() {
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
-    const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem('jwt');
     if (jwt) {
       // проверим токен
       auth
         .checkJWT(jwt)
-        .then((res) => {
-          if (res) {
-            setEmail(res.data.email);
+        .then((data) => {
+          if (data) {
+            setEmail(data.email);
             setisLoggedIn(true);
             history.push("/main");
           }
@@ -152,9 +152,9 @@ function App() {
   }
   React.useEffect(() => tokenCheck(), []);
 
-  function handleRegNewUser(password, email) {
+  function handleRegNewUser(email, password) {
     auth
-      .regNewUser(password, email)
+      .regNewUser(email, password)
       .then((res) => {
         if (res) {
           setIsSuccessReg(true);
@@ -169,9 +169,9 @@ function App() {
       });
   }
 
-  function handleLogin(password, email) {
+  function handleLogin(email, password) {
     auth
-      .loginUser(password, email)
+      .loginUser(email, password)
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);

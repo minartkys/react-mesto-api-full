@@ -3,19 +3,23 @@ class Auth {
     this._baseUrl = baseUrl;
   }
 
-  regNewUser(password, email) {
+  regNewUser(email, password) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password, email }),
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': "application/json",
+      },
+      body: JSON.stringify({ email, password }),
     }).then((res) => this._checkResponse(res));
   }
 
-  loginUser(password, email) {
+  loginUser(email, password) {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password, email }),
+      headers: { "Content-Type": "application/json",
+      'Accept': "application/json" },
+      body: JSON.stringify({ email, password }),
     }).then((res) => this._checkResponse(res));
   }
 
@@ -23,8 +27,9 @@ class Auth {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${JWT}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JWT}`,
       },
     }).then((res) => this._checkResponse(res));
   }
@@ -38,7 +43,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: "https://api.domainname.minartkys.nomoredomains.xyz",
 });
 
 export default auth;
