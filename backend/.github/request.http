@@ -1,0 +1,76 @@
+GET http://localhost:3001/users/
+
+###
+
+GET http://localhost:3001/users/me
+
+
+###
+
+POST http://localhost:3001/signup
+Content-Type: application/json
+
+{
+    "email": "madashd@mail.ru",
+    "password": "123123123"
+    }
+
+###
+
+POST http://localhost:3001/signin
+Content-Type: application/json
+
+{
+    "email": "madashd@mail.ru",
+    "password": "123123123"
+    }
+
+###
+
+POST http://localhost:3001/cards
+Content-Type: application/json
+
+{
+    "name": "kу",
+    "link": "RTYI"
+}
+
+###
+
+PATCH http://localhost:3000/users/me
+Content-Type: application/json
+
+{
+    "name": "dn",
+    "about": "sss"
+}
+
+###
+
+PATCH http://localhost:3000/users/me/avatar
+Content-Type: application/json
+
+{
+    "avatar": "re"
+}
+
+###
+GET http://localhost:3000/users/me
+###
+
+PUT http://localhost:3000/cards//likes
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:3000/cards/text
+Content-Type: application/json
+
+###
+
+PATCH http://localhost:3000/404
+Content-Type: application/json
+
+{
+    "avatar": "https://w-ddog.ruscsdcsdcsdc/wallpapers/10/18/464728990985141/priroda-gory-kamni-les.jpg"
+}
