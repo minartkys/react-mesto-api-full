@@ -3,3 +3,5 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 https://domainname.students.nomoredomains.xyz
+Домен сервера - api.domainname.minartkys.nomoredomains.xyz
+Публичный ip - 51.250.96.184
