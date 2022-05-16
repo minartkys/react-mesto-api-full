@@ -57,6 +57,8 @@ function App() {
         console.error(err);
       });
   }
+  React.useEffect(() => tokenCheck(), []);
+  
   React.useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getUserInformation(), api.getInitialCards()])
@@ -131,11 +133,8 @@ function App() {
   }
 
   function tokenCheck() {
-    // если у пользователя есть токен в localStorage,
-    // эта функция проверит валидность токена
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      // проверим токен
       auth
         .checkJWT(jwt)
         .then((data) => {
@@ -150,10 +149,9 @@ function App() {
         });
     }
   }
-  React.useEffect(() => tokenCheck(), []);
 
   function handleRegNewUser(email, password) {
-    auth
+    return auth
       .regNewUser(email, password)
       .then((res) => {
         if (res) {
@@ -176,6 +174,7 @@ function App() {
         if (res) {
           localStorage.setItem("jwt", res.token);
           tokenCheck();
+          setCurrentUser(res);
         }
       })
       .catch((err) => {
